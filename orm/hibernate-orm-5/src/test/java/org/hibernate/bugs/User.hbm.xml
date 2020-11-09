@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+  <class name="org.hibernate.bugs.User" table="G_USER" select-before-update="true">
+    <id name="id" column="GU_LFDNR"/>
+	<property name="userId" unique="true" column="GU_ID" not-null="true"/>
+  </class>
+</hibernate-mapping>

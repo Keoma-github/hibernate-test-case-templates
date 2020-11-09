@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+  <class name="org.hibernate.bugs.CostCenter" table="SIS_KST" select-before-update="true">
+	<id name="code" column="KST_CD"/>
+    <set name="costCenters" inverse="true" optimistic-lock="false">
+      <key column="KST_NEW_CD"/>
+      <one-to-many class="org.hibernate.bugs.CostCenter" not-found="ignore"/>
+    </set>
+    <many-to-one name="successor" unique="false" column="KST_NEW_CD" not-null="false" class="org.hibernate.bugs.CostCenter"/>
+    <many-to-one name="supervisingUser" unique="false" column="KST_KTKUSR" not-null="false" class="org.hibernate.bugs.User" property-ref="userId" fetch="join"/>
+  </class>
+</hibernate-mapping>
